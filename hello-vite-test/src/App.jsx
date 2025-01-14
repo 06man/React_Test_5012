@@ -12,18 +12,34 @@ function App() {
   // JSX 문법이고, 실제 동작은 위의 
   // 실제 동작은. 
   // return React.createElement("div", null, "Hello ", React.createElement ("b", null, "react"));
+
+  const name = '리액트';
+
   return (
+    // 순서1
     // <div>
     //   Hello 리액트 
     // </div>
-    // <div>
+
+    //순서2
+    // <div> 
+    // 순서3
     // <fragment>
-    <>
-      <h1>리액트 안녕!</h1>
-      <h2>잘 작동하니?</h2>
-    </>
+    // 순서4
+    // <>
+    //   <h1>리액트 안녕!</h1>
+    //   <h2>잘 작동하니? {name}</h2>
+    // </>
     // </fragment>
     // </div>
+    //순서5
+    <div>
+      {name === '리액트' ? (
+        <h1>리액트입니다.</h1>
+      ) : (
+        <h2>리액트가 아닙니다.</h2>
+      )}
+    </div>
   )
 }
 
