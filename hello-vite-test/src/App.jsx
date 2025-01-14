@@ -91,7 +91,12 @@ function App() {
   //   {name}</div>
 
   //순서11 
-  return <div className='react'>{name}</div>
+  return (
+    <>
+      <div className='react'>{name}</div>
+      <h2>jsx 주석 사용시 기존 ctrl + / 이용하기. </h2>
+    </>
+  )
 }
 
 export default App
