@@ -13,9 +13,20 @@ function App() {
   // 실제 동작은. 
   // return React.createElement("div", null, "Hello ", React.createElement ("b", null, "react"));
 
-  // const name = "리액트";
+  const name = "리액트";
   // const name = 0;
-  const name = undefined;
+  // const name = undefined;
+
+  const style = {
+    // background-color는 backgroundColor와 
+    // 같이 -가 사라지고 카멜 표기법으로 작성됩니다.
+    backgroundColor: 'black',
+    color: 'aqua',
+    // font-size -> fontSize
+    fontSize: '48px',
+    fontMeight: 'bold', // font-weight -> fontNeight 
+    padding: 16 // 단위를 생략하면 pX로 지정됩니다.
+  };
 
   // return (
   // 순서1
@@ -60,7 +71,10 @@ function App() {
 
   // )
   // 순서 9, or 연산자를 이용하는 방법. 앞에 변수가 출력이 안되는 상황을 대비할 경우. 
-  return name || '값이undefined입니다.';
+  // return name || '값이undefined입니다.';
+
+  //순서 10, 인라인 스타일링 확인. 
+  return <div style={style}>{name}</div>
 }
 
 export default App
