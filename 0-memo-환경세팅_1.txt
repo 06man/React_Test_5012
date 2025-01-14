@@ -69,6 +69,8 @@ f1 누르고 ->  Configure Display Language -> locale.json 파일 열림.
 
 
 리액트 프로젝트 시작 하는 방법 소개. 
+주의사항, 경로에 한글 있으면, 제거, 한글 없이 사용하기.
+
 방법1 - 방법3, 옛날 버전, 
 방법1)
 Vscode -> 터미널 -> cmd 
@@ -96,9 +98,22 @@ yarn start
 
 
 방법4으로 작업을 할 예정. vite, 작업. 
-폴더명 : vite-test, 예시. 
-yarn create vite vite-test --template react 
+폴더명 : hello-vite-test, 예시. 
+yarn create vite hello-vite-test --template react 
 폴더 이동후, 
 yarn 
 yarn dev 
 참고로, 시작 명령어 다 알려줌. 
+
+
+깃 이그노어 파일 작업. 
+1. 샘플 리액트 프로젝트에서 .gitignore 파일을 복사. 
+상위, 워크스페이스에 복사. 
+
+2. 각 프로젝트 폴더 하위에 공통으로, 원격지에서 사용 안하는 폴더 
+제외하기.
+
+# 각 리액트 프로젝트 내부의 node_modules , 깃 목록에서 제외하기. 
+**/node_modules
+# 각 프로젝트에서 build, 폴더도 다 제외하기.  
+**/build
