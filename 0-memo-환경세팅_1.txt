@@ -66,3 +66,39 @@ Night Owl은 어두운(Dark) 배경에 밝은(Bright)
 확장->Korean Language Pack for Visual Studio COde 설치 
 f1 누르고 ->  Configure Display Language -> locale.json 파일 열림. 
 -> locale : ko 변경 -> 재시작
+
+
+리액트 프로젝트 시작 하는 방법 소개. 
+방법1 - 방법3, 옛날 버전, 
+방법1)
+Vscode -> 터미널 -> cmd 
+- yarn create react-app hello-react 
+cd hello-react
+- yarn start 
+
+방법2)
+npm init react-app hello-react2 
+
+방법3) 
+npm 패키지 설치 후 바로 실행., 패키지를 정해진 위치에 설치 및 
+찾아서 실행하려면 번거롭기 때문에 함. 
+npx create-react-app hello-react3
+npm start 
+
+- yarn start 
+- yarn build
+- yarn test 
+- yarn eject 
+
+cd hello-react
+yarn start 
+웹 브라우저에서 확인 : localhost:3000
+
+
+방법4으로 작업을 할 예정. vite, 작업. 
+폴더명 : vite-test, 예시. 
+yarn create vite vite-test --template react 
+폴더 이동후, 
+yarn 
+yarn dev 
+참고로, 시작 명령어 다 알려줌. 
