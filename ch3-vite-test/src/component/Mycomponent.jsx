@@ -1,10 +1,15 @@
 import React from 'react';
+// 유효성 체크 해보는 도구
+import PropTypes from 'prop-types';
 
-const Mycomponent = (props) => {
+// const Mycomponent = (props) => {
+// 방법2 바로 이름으로 비구조화 할당 문법으로 바로 받기. 
+const Mycomponent = ({ name, children }) => {
 
     // 비구조화 할당 , 구조분해,
     // name = props.name, children = props.children
-    const { name, children } = props;
+    // 방법1 
+    // const { name, children } = props;
     return (
         <div>
             샘플 나의 첫 컴포넌트 만들기.
@@ -18,8 +23,14 @@ const Mycomponent = (props) => {
     );
 };
 
+// 기본 props 값 설정
 Mycomponent.defaultProps = {
     name: '기본 이름'
+};
+
+// 해당 props 타입 지정. 
+Mycomponent.propTypes = {
+    name: PropTypes.string
 };
 
 export default Mycomponent;
