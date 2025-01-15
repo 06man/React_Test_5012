@@ -30,7 +30,16 @@ class Counter extends Component {
                         // this.setState를 사용하여 state에 새로운 값을 넣을 수 있습니다.
                         this.setState({ number: number + 1 });
                         // 추가 작업1, 두번 호출해보기. 
-                        this.setState({ number: this.state.number + 1 });
+                        // this.setState({ number: this.state.number + 1 });
+                        // 추가 작업2, 두번 호출 해결책. 
+                        // 함수 형태로 작업 하기. 
+                        this.setState(
+                            (prevState) => {
+                                return {
+                                    number: prevState.number + 1,
+                                }
+                            }
+                        ) // 추가 작업 2,
                     }}
                 >
                     +1
