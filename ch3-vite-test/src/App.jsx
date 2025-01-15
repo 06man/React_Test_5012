@@ -9,8 +9,12 @@ function App() {
       <h1>{name}</h1>
       <div className="react">{name}</div>
       {/* 자식 컴포넌트 */}
+      {/* 순서1, props 이용해서 데이터 전달 예제 */}
       {/* <Mycomponent name="첫 데이터 전달하기 속성은 name으로 전달함." /> */}
-      <Mycomponent />
+      {/* 순서2, props 이용해서 데이터 전달 예제2, 기본값 사용 */}
+      {/* <Mycomponent /> */}
+      {/* 순서3, children 요소로 데이터 보내기  */}
+      <Mycomponent>children 요소로 데이터 보내기 </Mycomponent>
     </>
   )
 }
