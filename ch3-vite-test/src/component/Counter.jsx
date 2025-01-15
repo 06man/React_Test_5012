@@ -47,6 +47,7 @@ class Counter extends Component {
                     onClick={() => {
                         this.setState(
                             { number: this.state.number + 1 },
+                            // 추가 작업 진행.
                             () => {
                                 console.log('방금 setState가 호출되었습니다.');
                                 console.log(this.state);

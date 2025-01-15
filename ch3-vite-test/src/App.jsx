@@ -2,6 +2,7 @@ import './App.css'
 import Counter from './component/Counter'
 import Mycomponent from './component/Mycomponent'
 import Mycomponent2 from './component/Mycomponent2'
+import Say from './component/Say'
 
 function App() {
   const name = "리액트"
@@ -24,7 +25,9 @@ function App() {
       {/* 순서6, 클래스형 컴포넌트 버전으로 출력해보기. */}
       {/* <Mycomponent2 name="동시에 같이 보내기" favoriteNumber={100}>children 요소로 데이터 보내기 </Mycomponent2> */}
       {/* 순서7, 클래스형 컴포넌트 state 확인 예시 */}
-      <Counter />
+      {/* <Counter /> */}
+      {/* 순서8, 함수형 컴포넌트 hooks 중에서 useState 확인 예시 */}
+      <Say />
     </>
   )
 }
