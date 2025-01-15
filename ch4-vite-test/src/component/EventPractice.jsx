@@ -11,6 +11,7 @@ class EventPractice extends Component {
         return (
             <div>
                 <h1>이벤트 연습</h1>
+                <h2>message : {this.state.message}</h2>
                 <input
                     type="text"
                     name="message"
@@ -19,6 +20,7 @@ class EventPractice extends Component {
                     value={this.state.message}
                     //추가3
                     onChange={(e) => {
+                        //추가3-2, 이부분 가장 중요함.
                         this.setState({
                             message: e.target.value
                         });
