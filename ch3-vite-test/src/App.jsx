@@ -14,7 +14,7 @@ function App() {
       {/* 순서2, props 이용해서 데이터 전달 예제2, 기본값 사용 */}
       {/* <Mycomponent /> */}
       {/* 순서3, children 요소로 데이터 보내기  */}
-      <Mycomponent>children 요소로 데이터 보내기 </Mycomponent>
+      <Mycomponent name="동시에 같이 보내기">children 요소로 데이터 보내기 </Mycomponent>
     </>
   )
 }
