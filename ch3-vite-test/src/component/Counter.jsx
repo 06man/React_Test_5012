@@ -26,21 +26,34 @@ class Counter extends Component {
                 <h2>바뀌지 않는 값: {fixedNumber}</h2>
                 <button
                     // onClick을 통해 버튼이 클릭되었을 때 호출할 함수를 지정합니다.
+                    // onClick={() => {
+                    //     // this.setState를 사용하여 state에 새로운 값을 넣을 수 있습니다.
+                    //     this.setState({ number: number + 1 });
+                    //     // 추가 작업1, 두번 호출해보기. 
+                    //     // this.setState({ number: this.state.number + 1 });
+                    //     // 추가 작업2, 두번 호출 해결책. 
+                    //     // 함수 형태로 작업 하기. 
+                    //     this.setState(
+                    //         (prevState) => {
+                    //             return {
+                    //                 number: prevState.number + 1,
+                    //             }
+                    //         }
+                    //     ) // 추가 작업 2,
+                    // }}
+
+                    // 방법2,
+                    //setState 작업 후, 추가 작업 더 진행해보기. 
                     onClick={() => {
-                        // this.setState를 사용하여 state에 새로운 값을 넣을 수 있습니다.
-                        this.setState({ number: number + 1 });
-                        // 추가 작업1, 두번 호출해보기. 
-                        // this.setState({ number: this.state.number + 1 });
-                        // 추가 작업2, 두번 호출 해결책. 
-                        // 함수 형태로 작업 하기. 
                         this.setState(
-                            (prevState) => {
-                                return {
-                                    number: prevState.number + 1,
-                                }
+                            { number: this.state.number + 1 },
+                            () => {
+                                console.log('방금 setState가 호출되었습니다.');
+                                console.log(this.state);
                             }
-                        ) // 추가 작업 2,
+                        );
                     }}
+
                 >
                     +1
                 </button>
