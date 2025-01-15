@@ -65,7 +65,7 @@ class EventPractice extends Component {
     render() {
         return (
             <div>
-                <h1>이벤트 연습</h1>
+                <h1>이벤트 연습, 클래스형 컴포넌트</h1>
                 <h2>message : {this.state.message}</h2>
                 <h2>username : {this.state.username}</h2>
                 {/* 방법1 */}

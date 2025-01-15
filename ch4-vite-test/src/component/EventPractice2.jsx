@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const EventPractice2 = () => {
     const [username, setUsername] = useState('');
@@ -21,7 +21,7 @@ const EventPractice2 = () => {
 
     return (
         <div>
-            <h1>이벤트 연습</h1>
+            <h1>이벤트 연습, 함수형 컴포넌트 버전.</h1>
             <input
                 type="text"
                 name="username"
