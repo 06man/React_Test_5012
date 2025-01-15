@@ -26,6 +26,7 @@ const EventPractice2 = () => {
     // 교체작업1-4
     const onChange = (e) => {
         const nextForm = {
+            // ... 스프레드 연산자, 기존 값을 복사를 함. 
             ...form, // 기존의 form 내용을 이 자리에 복사한 뒤
             [e.target.name]: e.target.value // 원하는 값을 덮어 씌우기
         };
