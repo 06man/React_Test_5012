@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 const EventPractice2 = () => {
+    // 차이점, useState 훅스 이용한 부분 다름. 
     const [username, setUsername] = useState('');
     const [message, setMessage] = useState('');
 
@@ -22,6 +23,8 @@ const EventPractice2 = () => {
     return (
         <div>
             <h1>이벤트 연습, 함수형 컴포넌트 버전.</h1>
+            <h1>message : {message}</h1>
+            <h1>username : {username}</h1>
             <input
                 type="text"
                 name="username"
