@@ -3,13 +3,39 @@ import React, { Component } from 'react';
 class ScrollBoxEx extends Component {
 
     //실습 3번 작업1
-    state = { scrollTop: 0 }
+    //실습 4번 작업1, 추가, backgroundColor : 'blue'
+    state = {
+        scrollTop: 0, backgroundColor: 'blue',
+        scrollHeight: 0, clientHeight: 0
+    }
 
     //실습 3번 작업2
     handleScroll = () => {
         this.setState({
-            scrollTop: this.box.scrollTop
+            scrollTop: this.box.scrollTop,
+            scrollHeight: this.box.scrollHeight,
+            clientHeight: this.box.clientHeight,
+
         })
+
+        //실습 4번 작업2, 
+        // 스크롤의 위치에 따라서, 배경색 지정, 
+        // 맨위, 맨아래, 앞의 2가지 경우가 아닐 경우에 따라서, 
+        // scrollTop : 스크롤의 위치(0 ~ 350px)
+        // scrollHeight : 전체 높이, 650px
+        // clientHeight : 현재 div 높이, 300px
+        const { scrollTop, scrollHeight, clientHeight } = this.box;
+        if (scrollTop === 0) { // 맨위에 
+            console.log("맨위에")
+            this.setState({ backgroundColor: 'blue' })
+        } else if (scrollTop + clientHeight === scrollHeight) { // 맨밑에 
+            // } else if (scrollTop === 350) { // 맨밑에 
+            console.log("맨밑에")
+            this.setState({ backgroundColor: 'red' })
+        } else {
+            console.log("다른곳")
+            this.setState({ backgroundColor: 'green' })
+        }
     }
 
     // 스크롤바를 맨 밑으로 이동해주는 함수.
@@ -50,13 +76,15 @@ class ScrollBoxEx extends Component {
             height: '300px',
             width: '300px',
             overflow: 'auto',
-            position: 'relative'
+            position: 'relative',
+            //실습 4번 작업3, 
+            backgroundColor: this.state.backgroundColor
         };
 
         const innerStyle = {
             width: '100%',
             height: '650px',
-            background: 'linear-gradient(white, black)'
+            // background: 'linear-gradient(white, black)'
         };
 
         return (
@@ -68,12 +96,13 @@ class ScrollBoxEx extends Component {
                     }}
                     //실습 3번 작업3
                     onScroll={this.handleScroll}
-
                 >
                     <div style={innerStyle} />
-
                 </div>
+                {/* 실습 3번 작업4 */}
                 <p>현재 스크롤 위치 scrollTop : {this.state.scrollTop} </p>
+                <p>현재 스크롤 위치 scrollHeight : {this.state.scrollHeight} </p>
+                <p>현재 스크롤 위치 clientHeight : {this.state.clientHeight} </p>
             </>
         );
     }
