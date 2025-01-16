@@ -16,8 +16,15 @@ const IterationSample = () => {
     const [inputText, setInputText] = useState('');
     const [nextId, setNextId] = useState(5); // 새로운 항목을 추가할 때 사용할 id
 
-    const namesList = names.map((name) => <li key={name.id}>{name.text}</li>);
+    // 데이터 삭제 작업. 2
+    const namesList = names.map((name) =>
+        <li key={name.id} onDoubleClick={() => onRemove(name.id)}>{name.text}</li>);
 
+    // 데이터 삭제 작업. 1
+    const onRemove = (id) => {
+        const nextNames = names.filter((name) => name.id !== id);
+        setNames(nextNames);
+    };
     return (
         <div>
             <input
@@ -26,6 +33,7 @@ const IterationSample = () => {
                 placeholder="새 항목 입력"
             />
             <button
+                // 추가 작업
                 onClick={() => {
                     // concat, 내장함수, 기존 배열을 유지하고, 
                     // 새로운 요소를 추가한 새 배열을 생성. 
