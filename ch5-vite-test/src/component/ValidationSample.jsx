@@ -7,6 +7,7 @@ class ValidationSample extends Component {
         clicked: false,
         validated: false
     };
+    input = React.createRef();
 
     handleChange = (e) => {
         this.setState({
@@ -19,12 +20,18 @@ class ValidationSample extends Component {
             clicked: true,
             validated: this.state.password === '0000'
         });
+        this.input.focus();
     };
 
     render() {
         return (
             <div>
                 <input
+                    // 함수의 콜백 형태로 접근 하고 싶은 DOM 요소 달기
+                    // 방법1
+                    ref={(ref) => { this.input = ref }}
+                    // 방법2
+                    // ref={this.input}
                     type="password"
                     value={this.state.password}
                     onChange={this.handleChange}
