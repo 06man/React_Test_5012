@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+// 함수형 컴포넌트
 const LoginForm = () => {
     // 화면과 데이터를 동기화를 하기위한 state 정의하기. 
 
@@ -11,6 +12,8 @@ const LoginForm = () => {
         password: ''
     });
     // 교체작업1-2
+    // 사용자가 입력한 username, password 의 변경된 내용은 메모리상에, 
+    // 여기에 머금고 있다. 
     const { username, password } = form;
 
     // 순서3, onChage 작업, 
@@ -36,7 +39,23 @@ const LoginForm = () => {
             // onChange 실행 순서7, 실행 후, form = { username: "ㅇ", password : ""   }
             // onChange 실행 순서7-=, 실행 후, form = { username: "ㅇㄱ", password : ""   }
         };
+        //  변경된 form 세터 이용해서, 반영함. 
         setForm(nextForm);
+    };
+
+    const onClick = () => {
+        // 실습 2, 유효성 체크. username, message , 값이 없다면, 경고창 띄우기. 
+        if (!username || !password) {
+            //!username , 값을 없을 경우 실행하겠다. 
+            alert("username 과 password 모두 작성해주세요.!!!")
+        }
+        // 콘솔 로그 출력하기. 
+        // console.log("username : " + {username} + "password : " + {password} )
+        console.log(`username :   ${username} , password :   ${password} `)
+        setForm({
+            username: '',
+            message: ''
+        });
     };
 
     //jsx 문법을 사용해서, 화면에 출력. 
@@ -45,9 +64,10 @@ const LoginForm = () => {
     return (
         <>
             state 로 동작하는 onChange 변경사항을 화면에 동기화, 즉 표시해보기.
-            <h2>username : {username} , password : {password}</h2>
+            {/* <h2>username : {username} , password : {password}</h2> */}
 
             {/* 순서1 화면작업 */}
+            {/* DOM 요소 , h1, input  */}
             <h1 className='react'>실습 , 로그인화면 만들기.</h1>
             <input type='text' name='username' placeholder='사용자명'
                 // onChange 실행 순서1, username의 입력창 무언가 입력 됨. 
@@ -60,7 +80,7 @@ const LoginForm = () => {
             <input type='password' name='password' placeholder='패스워드'
                 value={password} onChange={onChange}
             />
-            <button>로그인</button>
+            <button onClick={onClick}>로그인</button>
         </>
     );
 };

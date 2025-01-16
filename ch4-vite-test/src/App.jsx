@@ -1,6 +1,7 @@
 import './App.css'
 import EventPractice from './component/EventPractice'
 import EventPractice2 from './component/EventPractice2'
+import JoinForm from './component/JoinForm'
 import LoginForm from './component/LoginForm'
 import Say from './component/Say'
 
@@ -12,7 +13,8 @@ function App() {
       {/* <Say /> */}
       {/* <EventPractice /> */}
       {/* <EventPractice2 /> */}
-      <LoginForm />
+      {/* <LoginForm /> */}
+      <JoinForm />
     </>
   )
 }
