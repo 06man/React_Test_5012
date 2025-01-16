@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 class ScrollBoxEx extends Component {
+    //스크롤 위치 확인시, 해상도 크기 확인 , 80% 확인됨.
 
     //실습 3번 작업1
     //실습 4번 작업1, 추가, backgroundColor : 'blue'
