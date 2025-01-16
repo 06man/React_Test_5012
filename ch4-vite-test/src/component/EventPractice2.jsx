@@ -14,6 +14,12 @@ const EventPractice2 = () => {
     // 교체작업1-2
     const { username, message } = form;
 
+    // 실습 1, 출력용 , state 정의. 
+    // useState(''); -> 반환을 배열을 반환함. 1번째요소, 초깃값, 
+    // 2번째요소, 1번째 값을 설정하는 setter 함수가 반환. 
+    // output: 초깃값, setOutput : 함수. 
+    const [output, setOutput] = useState('');
+
     // 교체작업1-3
     // const onChangeUsername = (e) => setUsername(e.target.value);
     // const onChangeMessage = (e) => setMessage(e.target.value);
@@ -35,6 +41,11 @@ const EventPractice2 = () => {
     // 교체작업1-5
     const onClick = () => {
         alert(username + ': ' + message);
+        // 실습 1-2, 출력용 output 곳에 값을 설정. 
+        // 주의사항, 
+        // output = 직접 값을 할당 . x
+        // setOutput 함수를 이용해서, 값을 할당. 설정. 
+        setOutput("설정하고 싶은 값을 추가.");
         setForm({
             username: '',
             message: ''
@@ -51,8 +62,10 @@ const EventPractice2 = () => {
     return (
         <div>
             <h1>이벤트 연습, 함수형 컴포넌트 버전.</h1>
-            <h1>message : {message}</h1>
-            <h1>username : {username}</h1>
+            {/* <h1>message : {message}</h1>
+            <h1>username : {username}</h1> */}
+            {/* 실습 1-3 화면 출력해보기 */}
+            <h1>출력용 결과 확인 : {output}</h1>
             <input
                 type="text"
                 name="username"
