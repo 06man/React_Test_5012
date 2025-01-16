@@ -24,6 +24,7 @@ class App extends Component {
         {/* 부모에서 자식 컴포넌트의 ref에 접근해서, 자식 컴포넌트 안에 메서드 호출하기 */}
         <button onClick={() => this.scrollBox.scrollToBottom()}>맨밑으로</button>
         <button onClick={() => this.scrollBox.scrollToTop()}>맨위로</button>
+        <button onClick={() => this.scrollBox.scrollToMiddle()}>중간으로</button>
       </>
     )
   }
