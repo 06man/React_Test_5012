@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
 
-class ScrollBox extends Component {
+class ScrollBoxEx extends Component {
 
+    //실습 3번 작업1
+    state = { scrollTop: 0 }
 
-
+    //실습 3번 작업2
+    handleScroll = () => {
+        this.setState({
+            scrollTop: this.box.scrollTop
+        })
+    }
 
     // 스크롤바를 맨 밑으로 이동해주는 함수.
     scrollToBottom = () => {
@@ -53,20 +60,23 @@ class ScrollBox extends Component {
         };
 
         return (
+            <>
+                <div
+                    style={style}
+                    ref={(ref) => {
+                        this.box = ref;
+                    }}
+                    //실습 3번 작업3
+                    onScroll={this.handleScroll}
 
-            <div
-                style={style}
-                ref={(ref) => {
-                    this.box = ref;
-                }}
+                >
+                    <div style={innerStyle} />
 
-            >
-                <div style={innerStyle} />
-
-            </div>
-
+                </div>
+                <p>현재 스크롤 위치 scrollTop : {this.state.scrollTop} </p>
+            </>
         );
     }
 }
 
-export default ScrollBox;
+export default ScrollBoxEx;
