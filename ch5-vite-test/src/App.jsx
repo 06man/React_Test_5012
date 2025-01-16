@@ -10,15 +10,17 @@ import ScrollBox from './component/ScrollBox';
 // 교체 작업 1
 class App extends Component {
   // 교체 작업 2
-  return() {
-    <>
-      <h1 className='react'>ch5 ref, DOM 요소에 이름달기</h1>
-      {/* <ValidationSample />
+  render() {
+    return (
+      <>
+        <h1 className='react'>ch5 ref, DOM 요소에 이름달기</h1>
+        {/* <ValidationSample />
       <RefSample /> */}
-      {/* 교체 작업 4 */}
-      <ScrollBox />
-    </>
+        {/* 교체 작업 4 */}
+        <ScrollBox />
+      </>
+    )
   }
 }
 
-export default App
+export default App;
