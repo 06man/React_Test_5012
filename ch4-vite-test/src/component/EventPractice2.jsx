@@ -40,17 +40,31 @@ const EventPractice2 = () => {
     };
     // 교체작업1-5
     const onClick = () => {
-        alert(username + ': ' + message);
+        // alert(username + ': ' + message);
+
         // 실습 1-2, 출력용 output 곳에 값을 설정. 
         // 주의사항, 
         // output = 직접 값을 할당 . x
-        // setOutput 함수를 이용해서, 값을 할당. 설정. 
-        setOutput("설정하고 싶은 값을 추가.");
+        // setOutput 함수를 이용해서, 값을 할당. 설정.
+
+        // 실습 2, 유효성 체크. username, message , 값이 없다면, 경고창 띄우기. 
+        if (!username || !message) {
+            //!username , 값을 없을 경우 실행하겠다. 
+            alert("username 과 message 모두 작성해주세요.!!!")
+        }
+        setOutput(`username : ${username} , message: ${message}`);
         setForm({
             username: '',
             message: ''
         });
     };
+
+    //실습3, form 의 내용을 초기화를 해요. 
+    // form 의 내용을 직접 변경 해야하나요?
+    // 아니면, 세터 함수를 이용해야하나요?
+    const onClear = () => {
+        setForm({ username: '', message: '' })
+    }
 
 
     const onKeyPress = (e) => {
@@ -65,7 +79,7 @@ const EventPractice2 = () => {
             {/* <h1>message : {message}</h1>
             <h1>username : {username}</h1> */}
             {/* 실습 1-3 화면 출력해보기 */}
-            <h1>출력용 결과 확인 : {output}</h1>
+            <h2>출력용 결과 확인 : {output}</h2>
             <input
                 type="text"
                 name="username"
@@ -85,6 +99,7 @@ const EventPractice2 = () => {
                 onKeyPress={onKeyPress}
             />
             <button onClick={onClick}>확인</button>
+            <button onClick={onClear}>초기화</button>
         </div>
     );
 };
