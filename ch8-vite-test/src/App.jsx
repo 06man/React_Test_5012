@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Info from './component/Info';
 import CounterUsereducer from './component/CounterUsereducer';
 import InfoUserReducer from './component/InfoUserReducer';
+import Average from './component/Average';
 
 const App = () => {
   const [visible, setVisible] = useState(false);
@@ -10,7 +11,7 @@ const App = () => {
     <>
       <div>
         <h1 className='react'>ch8 hooks 함수형 컴포넌트 추가 기능 확인</h1>
-        <button
+        {/* <button
           onClick={() => {
             setVisible(!visible);
           }}
@@ -19,10 +20,12 @@ const App = () => {
         </button>
         <hr />
         {visible && <Info />}
+        */}
       </div>
-      <h2>useReducer 버전 Counter</h2>
+      {/* <h2>useReducer 버전 Counter</h2>
       <CounterUsereducer />
-      <InfoUserReducer />
+      <InfoUserReducer /> */}
+      <Average />
     </>
   );
 };
