@@ -94,6 +94,24 @@ const IterationSampleEx = () => {
         }
     }
 
+    //실습 5번, 오름 차순, 내림 차순 (사전식 정렬)
+    const sortAscending = () => {
+        //(a, b) => a.text.localeCompare(b.text)
+        // a => 첫번째 요소의 객체  { id: 1, text: '눈사람' },
+        // b => 두번째 요소의 객체  { id: 2, text: '얼음' },
+        // localeCompare, a 요소 와 b 요소를 비교해서, 
+        // 양수(0보다크면), a 가 b보다 뒤에 있음. 
+        // 0 , a , b 같은 자리. 
+        // 음수 a 가 b보다 앞에 있음.
+        const sortedNames = [...names].sort((a, b) => a.text.localeCompare(b.text));
+        setNames(sortedNames);
+    }
+
+    const sortDescending = () => {
+        const sortedNames = [...names].sort((a, b) => b.text.localeCompare(a.text));
+        setNames(sortedNames);
+    }
+
     {/* // 실습3번, 목록 요소를 클릭시, 해당 요소 id 출력해보기.  */ }
     // 우클릭 이벤트 핸들링 onContextMenu
     const namesList = names.map((name) =>
@@ -116,6 +134,8 @@ const IterationSampleEx = () => {
             >
                 추가
             </button>
+            <button onClick={sortAscending}>오름차순 정렬</button>
+            <button onClick={sortDescending}>내림차순 정렬</button>
             <ul>{namesList}</ul>
         </div>
     );
