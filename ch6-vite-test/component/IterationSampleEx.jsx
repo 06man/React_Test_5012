@@ -24,26 +24,26 @@ const IterationSampleEx = () => {
 
 
     // 데이터 삭제 작업. 1
-    const onRemove = (id, text) => {
-        //filter ,모든 요소를 검사를해서, 조건에
-        // 맞는 요소만 뽑아서 새로운 배열을 생성. 
-        // (name), name 이라는 인자값에는 
-        // { id: 1, text: '눈사람' }
-        // 만약 id = 1, 조건에 맞는 배열의 요소는 
-        // id = 2, 3, 4 조건에 맞고, 
-        // id = 1 조건에 x
-        // 결론, 필터가 된 새로운 배열 : id = 2,3,4
-        const nextNames = names.filter((name) => name.id !== id);
-        // nextNames
-        // [
-        //  { id: 2, text: '얼음' },
-        // { id: 3, text: '눈' },
-        // { id: 4, text: '바람' },
-        // ]
-        setNames(nextNames);
-        console.log(`삭제한 요소는 , ${id}, ${text}`)
+    // const onRemove = (id, text) => {
+    //     //filter ,모든 요소를 검사를해서, 조건에
+    //     // 맞는 요소만 뽑아서 새로운 배열을 생성. 
+    //     // (name), name 이라는 인자값에는 
+    //     // { id: 1, text: '눈사람' }
+    //     // 만약 id = 1, 조건에 맞는 배열의 요소는 
+    //     // id = 2, 3, 4 조건에 맞고, 
+    //     // id = 1 조건에 x
+    //     // 결론, 필터가 된 새로운 배열 : id = 2,3,4
+    //     const nextNames = names.filter((name) => name.id !== id);
+    //     // nextNames
+    //     // [
+    //     //  { id: 2, text: '얼음' },
+    //     // { id: 3, text: '눈' },
+    //     // { id: 4, text: '바람' },
+    //     // ]
+    //     setNames(nextNames);
+    //     console.log(`삭제한 요소는 , ${id}, ${text}`)
 
-    };
+    // };
     //추가 작업 onClick 분리 하기. 
     const onClick = () => {
         // 실습 2, 기본 유효성 체크 
@@ -112,6 +112,35 @@ const IterationSampleEx = () => {
         setNames(sortedNames);
     }
 
+    // 실습 6번, 삭제한 요소를 따로 보관하는 state 
+    const [deletedItems, setDeletedItems] = useState([]);
+
+    // 실습 6번, 기존에 삭제하는 기능에서, 추가 작업. 
+    // 삭제한 내용을, deletedItems 배열에 담기.
+    const onRemove = (id) => {
+        //find 내장함수를 이용해서, 기존 배열에서, 삭제할 요소만 뽑아서, 새로운 배열생성. 
+        // 예시) 1요소를 삭제 했음. 
+        // remvedItem, 삭제할 요소가 담김. 1 요소 
+        const removedItem = names.find((name) => name.id === id);
+        if (confirm(`${removedItem.text}를 삭제하시겠습니까?`)) {
+            // 삭제한 내용을, deletedItems 배열에 담기.
+            setDeletedItems([...deletedItems, removedItem])
+            // 삭제할 요소를 제외한 나머지 요소 담김. 2,3,4 요소  
+            const nextNames = names.filter((name) => name.id !== id);
+            setNames(nextNames);
+            console.log(`삭제한 요소는 , ${id}`)
+        }
+    };
+
+    // 실습 6번, 복구하는 기능. 
+    // 삭제 한 요소를 가진 배열(deletedItems) -> 출력하는 배열로 옮기기. (names)
+    const restoreItem = (id) => {
+        const restoredItem = deletedItems.find((item) => item.id === id);
+        setNames([...names, restoredItem])
+        // 삭제한 요소를 가지는 배열에서, 다시 삭제요소를 제거. 
+        setDeletedItems(deletedItems.filter((item) => item.id !== id));
+    }
+
     {/* // 실습3번, 목록 요소를 클릭시, 해당 요소 id 출력해보기.  */ }
     // 우클릭 이벤트 핸들링 onContextMenu
     const namesList = names.map((name) =>
@@ -137,6 +166,16 @@ const IterationSampleEx = () => {
             <button onClick={sortAscending}>오름차순 정렬</button>
             <button onClick={sortDescending}>내림차순 정렬</button>
             <ul>{namesList}</ul>
+            <h1>삭제한 목록</h1>
+            {deletedItems.length > 0 && (
+                <ul>
+                    {deletedItems.map((item) =>
+                        <li key={item.id}>
+                            {item.text}
+                            <button onClick={() => restoreItem(item.id)}>복구</button>
+                        </li>)}
+                </ul>
+            )}
         </div>
     );
 };
