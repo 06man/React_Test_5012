@@ -5,6 +5,7 @@ import InfoUserReducer from './component/InfoUserReducer';
 import Average from './component/Average';
 import AverageUseCallback from './component/AverageUseCallback';
 import AverageUseRef from './component/AverageUseRef';
+import InfoCustomHooks from './component/InfoCustomHooks';
 
 const App = () => {
   const [visible, setVisible] = useState(false);
@@ -28,8 +29,9 @@ const App = () => {
       <CounterUsereducer />
       <InfoUserReducer /> */}
       {/* <Average /> */}
-      <AverageUseCallback />
-      <AverageUseRef />
+      {/* <AverageUseCallback />
+      <AverageUseRef /> */}
+      <InfoCustomHooks />
     </>
   );
 };

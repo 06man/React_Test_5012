@@ -10,7 +10,7 @@ const getAverage = (numbers) => {
 const AverageUseRef = () => {
     const [list, setList] = useState([]);
     const [number, setNumber] = useState('');
-    //추가1
+    //추가1, 설정
     const inputEl = useRef(null);
 
     const onChange = useCallback((e) => {
@@ -21,7 +21,7 @@ const AverageUseRef = () => {
         const nextList = list.concat(parseInt(number, 10));
         setList(nextList);
         setNumber('');
-        //추가2
+        //추가2, 적용
         inputEl.current.focus(); // 입력창 포커스
     }, [number, list]); // number 혹은 list가 바뀔 때만 함수 생성
 
@@ -32,7 +32,7 @@ const AverageUseRef = () => {
             <input
                 value={number}
                 onChange={onChange}
-                //추가3
+                //추가3, 설정2
                 ref={inputEl}
                 placeholder="숫자를 입력하세요"
             />
