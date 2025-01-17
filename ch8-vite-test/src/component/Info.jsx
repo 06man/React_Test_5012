@@ -15,11 +15,11 @@ const Info = () => {
         });
         // 뒷정리 함수 추가 부분
         return () => {
-            console.log('cleanup');
+            console.log('useEffect 후, 뒷정리 함수 호출. cleanup');
             console.log(name);
         };
         // }, [name, nickname]); // name과 nickname이 변경될 때마다 useEffect 실행
-    }, []); // 빈 배열로 마운트시 한번만 호출해보기.
+    }, [name]); // 빈 배열로 마운트시 한번만 호출해보기.
 
     const onChangeName = (e) => {
         setName(e.target.value);

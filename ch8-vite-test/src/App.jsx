@@ -1,19 +1,23 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import Counter from './component/Counter'
-import Info from './component/Info'
+import React, { useState } from 'react';
+import Info from './component/Info';
 
-function App() {
+const App = () => {
+  const [visible, setVisible] = useState(false);
 
   return (
-    <>
+    <div>
       <h1 className='react'>ch8 hooks 함수형 컴포넌트 추가 기능 확인</h1>
-      <Counter />
-      <Info />
-    </>
-  )
-}
+      <button
+        onClick={() => {
+          setVisible(!visible);
+        }}
+      >
+        {visible ? '숨기기' : '보이기'}
+      </button>
+      <hr />
+      {visible && <Info />}
+    </div>
+  );
+};
 
-export default App
+export default App;
