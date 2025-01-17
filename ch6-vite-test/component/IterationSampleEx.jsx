@@ -82,6 +82,13 @@ const IterationSampleEx = () => {
         setInputText('');
     }
 
+    //실습 4번, 수정 기능, 우클릭시 요소 수정하기. 
+    const onUpdate = (id, newText) => {
+        const updateNames = names.map((name) =>
+            name.id === id ? { ...name, text: newText } : name)
+        setNames(updateNames);
+    }
+
 
     return (
         <div>
