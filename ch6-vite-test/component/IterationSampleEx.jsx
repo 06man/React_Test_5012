@@ -19,8 +19,12 @@ const IterationSampleEx = () => {
     // 데이터 삭제 작업. 2
     // map -> (name), name 이라는 인자값에는 
     // { id: 1, text: '눈사람' }
+    // 
+
+    {/* // 실습3번, 목록 요소를 클릭시, 해당 요소 id 출력해보기.  */ }
     const namesList = names.map((name) =>
-        <li key={name.id} onDoubleClick={() => onRemove(name.id)}>{name.text}</li>);
+        <li key={name.id} onClick={() => { alert(`선택한 ID: ${name.id} `) }}
+            onDoubleClick={() => onRemove(name.id)}>{name.text}</li>);
 
     // 데이터 삭제 작업. 1
     const onRemove = (id) => {
@@ -44,7 +48,7 @@ const IterationSampleEx = () => {
     };
     //추가 작업 onClick 분리 하기. 
     const onClick = () => {
-        // 실습 1, 기본 유효성 체크 
+        // 실습 2, 기본 유효성 체크 
         if (!inputText.trim()) {
             alert("공백은 입력 할수 없습니다.")
             return
@@ -56,6 +60,7 @@ const IterationSampleEx = () => {
         // 결론, 전체 요소 중에서, 같은 요소가 있는지 검사용으로 활용. 
         if (names.some((name) => name.text === inputText)) {
             alert("이미 존재하는 항목입니다.")
+            setInputText("")
             return;
         }
 
