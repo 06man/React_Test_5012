@@ -8,11 +8,12 @@ class LifeCycleSample extends Component {
 
     myRef = null; // ref를 설정할 부분
 
+    // 생명주기 시작, 마운트 1번
     constructor(props) {
         super(props);
         console.log('constructor');
     }
-
+    // 생명주기 , 마운트 2번, 업데이트시에도 호출 1번 
     static getDerivedStateFromProps(nextProps, prevState) {
         console.log('getDerivedStateFromProps');
         if (nextProps.color !== prevState.color) {
@@ -21,16 +22,19 @@ class LifeCycleSample extends Component {
         return null;
     }
 
+    // 생명주기 , 마운트 4번
     componentDidMount() {
         console.log('componentDidMount');
     }
 
+    // 생명주기 , 업데이트  2번
     shouldComponentUpdate(nextProps, nextState) {
         console.log('shouldComponentUpdate', nextProps, nextState);
         // 숫자의 마지막 자리가 4면 리렌더링하지 않습니다.
         return nextState.number % 10 !== 4;
     }
 
+    // 언마운트 , 컴포넌트가 제거 되기 직전에 호출. 
     componentWillUnmount() {
         console.log('componentWillUnmount');
     }
@@ -41,6 +45,7 @@ class LifeCycleSample extends Component {
         });
     };
 
+    // 생명주기 , 업데이트  4번
     getSnapshotBeforeUpdate(prevProps, prevState) {
         console.log('getSnapshotBeforeUpdate');
         if (prevProps.color !== this.props.color) {
@@ -49,6 +54,7 @@ class LifeCycleSample extends Component {
         return null;
     }
 
+    // 생명주기 , 업데이트  5번
     componentDidUpdate(prevProps, prevState, snapshot) {
         console.log('componentDidUpdate', prevProps, prevState);
         if (snapshot) {
@@ -56,6 +62,7 @@ class LifeCycleSample extends Component {
         }
     }
 
+    // 생명주기 , 마운트 3번, 업데이트 3번 
     render() {
         console.log('render');
         const style = {
@@ -64,6 +71,8 @@ class LifeCycleSample extends Component {
 
         return (
             <div>
+                {/* 에러를 발생시키는 부분을 주석 처리 또는 수정 */}
+                {/* {this.props.missing.value} */}
                 <h1 style={style} ref={(ref) => (this.myRef = ref)}>
                     {this.state.number}
                 </h1>
