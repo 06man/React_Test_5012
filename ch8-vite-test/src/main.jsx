@@ -4,7 +4,8 @@ import './index.css'
 import App from './App.jsx'
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
+  // <StrictMode>
+  // 생명주기 콘솔 확인시, 2번씩 출력되는 부분을 방지할 수 있음.
+  <App />
+  // </StrictMode>,
 )
