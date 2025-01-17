@@ -3,6 +3,7 @@ import Info from './component/Info';
 import CounterUsereducer from './component/CounterUsereducer';
 import InfoUserReducer from './component/InfoUserReducer';
 import Average from './component/Average';
+import AverageUseCallback from './component/AverageUseCallback';
 
 const App = () => {
   const [visible, setVisible] = useState(false);
@@ -25,7 +26,8 @@ const App = () => {
       {/* <h2>useReducer 버전 Counter</h2>
       <CounterUsereducer />
       <InfoUserReducer /> */}
-      <Average />
+      {/* <Average /> */}
+      <AverageUseCallback />
     </>
   );
 };
