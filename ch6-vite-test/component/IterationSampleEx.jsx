@@ -21,13 +21,10 @@ const IterationSampleEx = () => {
     // { id: 1, text: '눈사람' }
     // 
 
-    {/* // 실습3번, 목록 요소를 클릭시, 해당 요소 id 출력해보기.  */ }
-    const namesList = names.map((name) =>
-        <li key={name.id} onClick={() => { alert(`선택한 ID: ${name.id} `) }}
-            onDoubleClick={() => onRemove(name.id)}>{name.text}</li>);
+
 
     // 데이터 삭제 작업. 1
-    const onRemove = (id) => {
+    const onRemove = (id, text) => {
         //filter ,모든 요소를 검사를해서, 조건에
         // 맞는 요소만 뽑아서 새로운 배열을 생성. 
         // (name), name 이라는 인자값에는 
@@ -44,6 +41,7 @@ const IterationSampleEx = () => {
         // { id: 4, text: '바람' },
         // ]
         setNames(nextNames);
+        console.log(`삭제한 요소는 , ${id}, ${text}`)
 
     };
     //추가 작업 onClick 분리 하기. 
@@ -82,13 +80,26 @@ const IterationSampleEx = () => {
         setInputText('');
     }
 
-    //실습 4번, 수정 기능, 우클릭시 요소 수정하기. 
+    //실습 4번, 수정 기능, 우클릭시 요소 수정하기. 1
     const onUpdate = (id, newText) => {
         const updateNames = names.map((name) =>
             name.id === id ? { ...name, text: newText } : name)
         setNames(updateNames);
     }
+    //실습 4번,수정 기능, 우클릭시 요소 수정하기. 2
+    const rightClick = (id, text) => {
+        const newText = prompt("수정할 내용을 입력하세요.", text);
+        if (newText && newText.trim()) {
+            onUpdate(id, newText)
+        }
+    }
 
+    {/* // 실습3번, 목록 요소를 클릭시, 해당 요소 id 출력해보기.  */ }
+    // 우클릭 이벤트 핸들링 onContextMenu
+    const namesList = names.map((name) =>
+        <li key={name.id}
+            onContextMenu={() => rightClick(name.id, name.text)}
+            onDoubleClick={() => onRemove(name.id, name.text)}>{name.text}</li>);
 
     return (
         <div>
