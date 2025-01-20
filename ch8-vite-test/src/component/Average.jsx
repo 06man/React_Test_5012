@@ -30,7 +30,7 @@ const Average = () => {
         // 진법 10 진법 표기. 
         // 유효성 체크 
         const parsedNumber = parseInt(number, 10);
-        if (isNaN(parsedNumber)) {
+        if (isNaN(parsedNumber) && parsedNumber < 0) {
             setNumber('');
             // inputEl.current.focus();
             return;
@@ -43,6 +43,9 @@ const Average = () => {
 
     // useMemo, 추가, 기존 평균 구하는 함수를 메모 이용하기. 
     const avg = useMemo(() => getAverage(list), [list]);
+    // 실습 2, 사용하기전, 콘솔 확인 해보기. 
+    // 숫자 입력 중에도, 불필요한 연산을 계속함. 
+    // const avg = getAverage(list);
     return (
         <div>
             <input value={number} onChange={onChange} placeholder="숫자를 입력하세요" />
