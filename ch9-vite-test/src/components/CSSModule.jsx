@@ -10,7 +10,10 @@ const CSSModule = () => {
             <div className={styles.wrapper2}>
                 안녕하세요, 저는 <span className={'mycss'}>CSSModule!</span>
             </div>
-        </>
+
+            <div className={`${styles.wrapper} ${styles.inverted}`}>
+                안녕하세요, 저는 <span className={'something'}>CSSModule!</span>
+            </div>        </>
     );
 }
 
