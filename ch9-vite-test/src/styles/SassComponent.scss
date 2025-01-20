@@ -1,5 +1,11 @@
 @import './utils';
 
+:local .wrapperSassComponent {
+    background: black;
+    padding: 2rem;
+    color: yellow;
+    font-size: 3rem;
+}
 
 .SassComponent {
     display: flex;
