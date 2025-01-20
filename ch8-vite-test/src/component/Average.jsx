@@ -24,9 +24,18 @@ const Average = () => {
         // setNumber(e.target.value);
     };
 
+    // 실습 1-2, 공백 입력시 유효성 체크. 
     const onInsert = () => {
         // parseInt(number, 10), number 문자열로 된 숫자, 숫자 타입 변경, 
         // 진법 10 진법 표기. 
+        // 유효성 체크 
+        const parsedNumber = parseInt(number, 10);
+        if (isNaN(parsedNumber)) {
+            setNumber('');
+            // inputEl.current.focus();
+            return;
+        }
+
         const nextList = list.concat(parseInt(number, 10));
         setList(nextList);
         setNumber('');
