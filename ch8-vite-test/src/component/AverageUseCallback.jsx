@@ -43,6 +43,7 @@ const AverageUseCallback = () => {
     }, [number, list]); // number 또는 list가 바뀌었을 때만 함수 생성
 
     const avg = useMemo(() => getAverage(list), [list]);
+    // const avg = getAverage(list);
 
     //추가 작업 순서1, 함수의 새롭게 생성되는지 여부 확인. 
     // import 필요 , useRef
@@ -50,14 +51,14 @@ const AverageUseCallback = () => {
 
     // 추가 작업 순서2,
     // 이전 함수와 현재 함수 비교
-    if (previousCallback.current !== onChange) {
-        console.log("onChange 함수가 새로 생성되었습니다.");
+    if (previousCallback.current !== onInsert) {
+        console.log("onInsert 함수가 새로 생성되었습니다.");
     } else {
-        console.log("onChange 함수가 재사용되고 있습니다.");
+        console.log("onInsert 함수가 재사용되고 있습니다.");
     }
     // 추가 작업 순서3,
     // 현재 함수 참조를 저장
-    previousCallback.current = onChange;
+    previousCallback.current = onInsert;
 
 
     return (

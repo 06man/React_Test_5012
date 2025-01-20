@@ -1,6 +1,7 @@
 import useInputs from "./uselnputs";
 
 const InfoCustomHooks = () => {
+    // 변경1, 
     const [state, onChange] = useInputs({
         name: '',
         nickname: '',

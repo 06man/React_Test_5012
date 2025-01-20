@@ -13,8 +13,15 @@ const Average = () => {
     const [list, setList] = useState([]);
     const [number, setNumber] = useState('');
 
+    // 실습 1-1, 숫자인 경우만 업데이트 해보기. 
     const onChange = (e) => {
-        setNumber(e.target.value);
+        const value = e.target.value;
+        if (!isNaN(value) && value.trim() !== "") {
+            console.log("숫자인 경우만, onChange")
+            setNumber(value);
+        }
+        // console.log("숫자가 아닌 경우만, onChange")
+        // setNumber(e.target.value);
     };
 
     const onInsert = () => {
