@@ -57,6 +57,16 @@
             @include square(7);
         }
 
+        //실습1번 
+        &.pink {
+            background: $pink;
+            @include square(8);
+
+            &:hover {
+                background: white;
+            }
+        }
+
         &:hover {
             background: black;
         }

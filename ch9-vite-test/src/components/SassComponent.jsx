@@ -1,4 +1,4 @@
-import './SassComponent.scss';
+import '@styles/SassComponent.scss'
 // 추가
 import styles from '@styles/CSSModule.module.scss';
 import classNames from 'classnames/bind';
@@ -18,6 +18,8 @@ const SassComponent = () => {
                 <div className="box blue" />
                 <div className="box indigo" />
                 <div className="box violet" />
+                {/* 실습1 */}
+                <div className="box pink" />
             </div >
         </>
     );
