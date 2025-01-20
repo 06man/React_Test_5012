@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import SassComponent from './components/SassComponent';
+import SassComponent from './components/123/456/789/SassComponent';
+
 
 
 class App extends Component {

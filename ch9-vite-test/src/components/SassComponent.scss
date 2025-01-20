@@ -1,50 +1,50 @@
-@import '../styles/utils';
+// @import '../styles/utils';
 
-.SassComponent {
-    display: flex;
+// .SassComponent {
+//     display: flex;
 
-    .box {
-        background: red;
-        cursor: pointer;
-        transition: all 0.3s ease-in;
+//     .box {
+//         background: red;
+//         cursor: pointer;
+//         transition: all 0.3s ease-in;
 
-        &.red {
-            background: $red;
-            @include square(1);
-        }
+//         &.red {
+//             background: $red;
+//             @include square(1);
+//         }
 
-        &.orange {
-            background: $orange;
-            @include square(2);
-        }
+//         &.orange {
+//             background: $orange;
+//             @include square(2);
+//         }
 
-        &.yellow {
-            background: $yellow;
-            @include square(3);
-        }
+//         &.yellow {
+//             background: $yellow;
+//             @include square(3);
+//         }
 
-        &.green {
-            background: $green;
-            @include square(4);
-        }
+//         &.green {
+//             background: $green;
+//             @include square(4);
+//         }
 
-        &.blue {
-            background: $blue;
-            @include square(5);
-        }
+//         &.blue {
+//             background: $blue;
+//             @include square(5);
+//         }
 
-        &.indigo {
-            background: $indigo;
-            @include square(6);
-        }
+//         &.indigo {
+//             background: $indigo;
+//             @include square(6);
+//         }
 
-        &.violet {
-            background: $violet;
-            @include square(7);
-        }
+//         &.violet {
+//             background: $violet;
+//             @include square(7);
+//         }
 
-        &:hover {
-            background: black;
-        }
-    }
-}
+//         &:hover {
+//             background: black;
+//         }
+//     }
+// }
