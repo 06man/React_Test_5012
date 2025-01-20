@@ -36,7 +36,8 @@ const Average = () => {
         // 진법 10 진법 표기. 
         // 유효성 체크 
         const parsedNumber = parseInt(number, 10);
-        if (isNaN(parsedNumber) && parsedNumber < 0) {
+        if ((isNaN(parsedNumber) && parsedNumber < 0) || parsedNumber > 100) {
+            alert("1~100 사이 숫자를 입력해주세요.")
             setNumber('');
             // inputEl.current.focus();
             return;
