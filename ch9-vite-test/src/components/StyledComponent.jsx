@@ -1,10 +1,44 @@
 import styled, { css } from 'styled-components';
 
+const sizes = {
+    desktop: 1024,
+    tablet: 768,
+};
+
+const media = Object.keys(sizes).reduce((acc, label) => {
+    acc[label] = (...args) => css`
+      @media (max-width: ${sizes[label] / 16}em) {
+        ${css(...args)};
+      }
+    `;
+    return acc;
+}, {});
+
+// 위의 내용이 변환된 모양을 예시
+// const media = {
+//     desktop: (...args) =>css`
+//       @media(max-width: 64em) {
+//         ${css(...args)};
+//         //width: 768px;
+//       }
+//     `,
+//     tablet: (...args) =>css`
+//       @media(max-width: 48em) {
+//         ${css(...args)};
+//         //width: 100%;
+//       }
+//     `};
+
+
 // Box 컴포넌트
 const Box = styled.div`
   background: ${props => props.color || 'blue'};
   padding: 1rem;
   display: flex;
+
+  /* media 쿼리를 사용하여 크기 조정 */
+  ${media.desktop`width: 768px;`}
+  ${media.tablet`width: 100%;`}
 `;
 
 // Button 컴포넌트
@@ -48,7 +82,7 @@ const Button = styled.button`
 const StyledComponent = () => (
     <Box color="black">
         <Button>안녕하세요</Button>
-        <Button inverted={true}>테두리만</Button>
+        <Button inverted={false}>테두리만</Button>
     </Box>
 );
 
