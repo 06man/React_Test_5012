@@ -73,10 +73,15 @@ function App() {
   // useCallback 사용시, 의존성 배열안에 빈 문자열을 넣어서, 
   // 함수를 한번 만 생성 후, 재사용하는 결과 와 같음. 
   const toggleAll = useCallback(() => {
-    setTodos((todos) =>
-      todos.map((todo) => ({ ...todo, checked: !todo.checked })))
+    setTodos(
+      (todos) =>
+        todos.map((todo) => ({ ...todo, checked: !todo.checked }))
+    )
   }, []);
 
+  //실습3, 
+  const checkedTodos = todos.filter((todo) => todo.checked);
+  const uncheckedTodos = todos.filter((todo) => !todo.checked);
 
   return (
     <>
@@ -93,6 +98,12 @@ function App() {
         {/* 추가 3-3, onRemove 부모 -> 자식, props 전달, onRemove */}
         {/* 추가 4-2, onToggle 부모 -> 자식, props 전달, onToggle */}
         <TodoList todos={todos} onRemove={onRemove} onToggle={onToggle} />
+        <div>
+          <h3>체크된 항목</h3>
+          <TodoList todos={checkedTodos} onRemove={onRemove} onToggle={onToggle} />
+          <h3>체크 안된 항목</h3>
+          <TodoList todos={uncheckedTodos} onRemove={onRemove} onToggle={onToggle} />
+        </div>
       </TodoTemplate>;
 
     </>
