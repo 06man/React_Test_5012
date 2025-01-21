@@ -6,6 +6,7 @@ import { MdAdd } from 'react-icons/md';
 import './TodoInsert.scss';
 
 // 추가2-1 , onInsert(함수)
+
 const TodoInsert = ({ onInsert }) => {
     //추가1-2
     const [value, setValue] = useState('');
