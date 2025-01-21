@@ -13,7 +13,8 @@ import './TodoListItem.scss';
 
 // 추가 2-1 , onRemove
 const TodoListItem = ({ todo, onRemove }) => {
-    const { text, checked } = todo;
+    // 추가 2-2, id
+    const { id, text, checked } = todo;
 
     return (
         <div className="TodoListItem">
@@ -24,7 +25,8 @@ const TodoListItem = ({ todo, onRemove }) => {
                 {/* 추가1-5 */}
                 <div className="text">{text}</div>
             </div>
-            <div className="remove">
+            {/* 추가 2-3 */}
+            <div className="remove" onClick={() => onRemove(id)}>
                 <MdRemoveCircleOutline />
             </div>
         </div>
