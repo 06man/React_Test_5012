@@ -3,6 +3,7 @@ import { useState } from 'react'
 import './App.css'
 import TodoTemplate from './components/TodoTemplate'
 import TodoInsert from './components/TodoInsert'
+import TodoList from './components/TodoList'
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
       <TodoTemplate>
         {/* Todo App을 만들자! */}
         <TodoInsert />
+        <TodoList />
       </TodoTemplate>;
 
     </>
