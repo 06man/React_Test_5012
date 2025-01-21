@@ -1,4 +1,5 @@
-import { useState } from 'react'
+//추가2-1, useRef, useCallback
+import { useRef, useCallback, useState } from 'react'
 
 import './App.css'
 import TodoTemplate from './components/TodoTemplate'
@@ -25,12 +26,33 @@ function App() {
     },
   ]);
 
+  //추가2-2, useRef
+  // 고유 id로 사용될 값
+  // ref를 사용하여 변수 담기
+  const nextId = useRef(4);
+
+  //추가2-3, useCallback 이용해서, 한번만 생성후, 재사용.
+  const onInsert = useCallback(
+    (text) => {
+      // 사용자가 입력한 일정, 객체
+      const todo = {
+        id: nextId.current,
+        text,
+        checked: false,
+      };
+      // 불변성 유지 하면서, 내장함수 concat , 기본 배열에 추가하기.
+      setTodos((todos) => todos.concat(todo)); // 새로운 항목 추가
+      nextId.current += 1; // nextId를 1씩 증가
+    },
+    []
+  );
   return (
     <>
       <h1 className='react'>ch10 일정관리 애플리케이션 예제</h1>
       <TodoTemplate>
         {/* Todo App을 만들자! */}
-        <TodoInsert />
+        {/* 추가2-4, 부모 -> 자식, props 전달, onInsert*/}
+        <TodoInsert onInsert={onInsert} />
         {/* 더미 데이터 추가2  props 로 전달. */}
         <TodoList todos={todos} />
       </TodoTemplate>;
