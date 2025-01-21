@@ -67,6 +67,17 @@ function App() {
   //실습1, 
   const checkedCount =
     todos.filter((todo) => todo.checked).length
+
+  //실습2, todos 배열 안의 객체 요소의 checked 부분 설정. 
+  // 함수 안에, 다시 함수 형태로 넣게 되면, 
+  // useCallback 사용시, 의존성 배열안에 빈 문자열을 넣어서, 
+  // 함수를 한번 만 생성 후, 재사용하는 결과 와 같음. 
+  const toggleAll = useCallback(() => {
+    setTodos((todos) =>
+      todos.map((todo) => ({ ...todo, checked: !todo.checked })))
+  }, []);
+
+
   return (
     <>
       <h1 className='react'>ch10 일정관리 애플리케이션 예제</h1>
@@ -77,6 +88,7 @@ function App() {
         <div>
           완료된 항목의 갯수 : {checkedCount}
         </div>
+        <button onClick={toggleAll}>상태 체크 반전 모두하기.</button>
         {/* 더미 데이터 추가2  props 로 전달. */}
         {/* 추가 3-3, onRemove 부모 -> 자식, props 전달, onRemove */}
         {/* 추가 4-2, onToggle 부모 -> 자식, props 전달, onToggle */}
