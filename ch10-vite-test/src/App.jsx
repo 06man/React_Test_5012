@@ -63,6 +63,10 @@ function App() {
       )
     );
   }, []);
+
+  //실습1, 
+  const checkedCount =
+    todos.filter((todo) => todo.checked).length
   return (
     <>
       <h1 className='react'>ch10 일정관리 애플리케이션 예제</h1>
@@ -70,6 +74,9 @@ function App() {
         {/* Todo App을 만들자! */}
         {/* 추가2-4, 부모 -> 자식, props 전달, onInsert*/}
         <TodoInsert onInsert={onInsert} />
+        <div>
+          완료된 항목의 갯수 : {checkedCount}
+        </div>
         {/* 더미 데이터 추가2  props 로 전달. */}
         {/* 추가 3-3, onRemove 부모 -> 자식, props 전달, onRemove */}
         {/* 추가 4-2, onToggle 부모 -> 자식, props 전달, onToggle */}
