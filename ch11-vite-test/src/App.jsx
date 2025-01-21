@@ -8,23 +8,23 @@ import TodoList from './components/TodoList'
 
 function App() {
   // 더미 데이터 추가1
-  const [todos, setTodos] = useState([
-    {
-      id: 1,
-      text: '리액트의 기초 알아보기',
-      checked: true,
-    },
-    {
-      id: 2,
-      text: '컴포넌트 스타일링해 보기',
-      checked: true,
-    },
-    {
-      id: 3,
-      text: '일정 관리 앱 만들어 보기',
-      checked: false,
-    },
-  ]);
+  // 많은 더미 데이터 추가하기. 
+  function createBulkTodos() {
+    const array = [];
+    for (let i = 1; i <= 5000; i++) {
+      array.push({
+        id: i,
+        text: `할 일 ${i}`,
+        checked: false,
+      });
+    }
+    return array;
+  }
+
+
+  // createBulkTodos, 한번만 호출하기 위해서, 
+  // () 빼고 넣기.
+  const [todos, setTodos] = useState(createBulkTodos);
 
   //추가2-2, useRef
   // 고유 id로 사용될 값
