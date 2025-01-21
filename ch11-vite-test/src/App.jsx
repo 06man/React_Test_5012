@@ -1,10 +1,34 @@
 //추가2-1, useRef, useCallback
-import { useRef, useCallback, useState } from 'react'
+import { useRef, useCallback, useState, useReducer } from 'react'
 
 import './App.css'
 import TodoTemplate from './components/TodoTemplate'
 import TodoInsert from './components/TodoInsert'
 import TodoList from './components/TodoList'
+
+// 리듀서 함수 이용하기.
+// todoReducer 함수
+function todoReducer(todos, action) {
+  switch (action.type) {
+    case 'INSERT': // 새 항목 추가
+      // { type: 'INSERT', todo: { id: 1, text: 'todo', checked: false } }
+      return todos.concat(action.todo);
+
+    case 'REMOVE': // 항목 제거
+      // { type: 'REMOVE', id: 1 }
+      return todos.filter((todo) => todo.id !== action.id);
+
+    case 'TOGGLE': // 체크 상태 토글
+      // { type: 'TOGGLE', id: 1 }
+      return todos.map((todo) =>
+        todo.id === action.id ? { ...todo, checked: !todo.checked } : todo
+      );
+
+    default:
+      return todos;
+  }
+}
+
 
 function App() {
   // 더미 데이터 추가1
@@ -24,7 +48,10 @@ function App() {
 
   // createBulkTodos, 한번만 호출하기 위해서, 
   // () 빼고 넣기.
-  const [todos, setTodos] = useState(createBulkTodos);
+  // const [todos, setTodos] = useState(createBulkTodos);
+
+  // useReducer로 상태 관리
+  const [todos, dispatch] = useReducer(todoReducer, undefined, createBulkTodos);
 
   //추가2-2, useRef
   // 고유 id로 사용될 값
@@ -41,7 +68,8 @@ function App() {
         checked: false,
       };
       // 불변성 유지 하면서, 내장함수 concat , 기본 배열에 추가하기.
-      setTodos((todos) => todos.concat(todo)); // 새로운 항목 추가
+      // setTodos((todos) => todos.concat(todo)); // 새로운 항목 추가
+      dispatch({ type: 'INSERT', todo });
       nextId.current += 1; // nextId를 1씩 증가
     },
     []
@@ -50,18 +78,24 @@ function App() {
   // 추가 3-1,
   const onRemove = useCallback(
     (id) => {
-      setTodos((todos) => todos.filter((todo) => todo.id !== id));
+      // setTodos(
+      //   (todos) => todos.filter((todo) => todo.id !== id)
+      // );
+      dispatch({ type: 'REMOVE', id });
+
     },
     []
   );
 
   // 추가 4-1
   const onToggle = useCallback((id) => {
-    setTodos((todos) =>
-      todos.map((todo) =>
-        todo.id === id ? { ...todo, checked: !todo.checked } : todo
-      )
-    );
+    dispatch({ type: 'TOGGLE', id });
+    // setTodos(
+    //   (todos) =>
+    //     todos.map((todo) =>
+    //       todo.id === id ? { ...todo, checked: !todo.checked } : todo
+    //     )
+    // );
   }, []);
 
   //실습1, 
@@ -82,6 +116,9 @@ function App() {
   //실습3, 
   const checkedTodos = todos.filter((todo) => todo.checked);
   const uncheckedTodos = todos.filter((todo) => !todo.checked);
+
+
+
 
   return (
     <>
