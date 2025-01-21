@@ -1,10 +1,23 @@
 //추가2-1, useRef, useCallback
 import { useRef, useCallback, useState, useReducer } from 'react'
-
 import './App.css'
 import TodoTemplate from './components/TodoTemplate'
 import TodoInsert from './components/TodoInsert'
 import TodoList from './components/TodoList'
+
+// 더미 데이터 추가1
+// 많은 더미 데이터 추가하기. 
+function createBulkTodos() {
+  const array = [];
+  for (let i = 1; i <= 5000; i++) {
+    array.push({
+      id: i,
+      text: `할 일 ${i}`,
+      checked: false,
+    });
+  }
+  return array;
+}
 
 // 리듀서 함수 이용하기.
 // todoReducer 함수
@@ -31,20 +44,6 @@ function todoReducer(todos, action) {
 
 
 function App() {
-  // 더미 데이터 추가1
-  // 많은 더미 데이터 추가하기. 
-  function createBulkTodos() {
-    const array = [];
-    for (let i = 1; i <= 5000; i++) {
-      array.push({
-        id: i,
-        text: `할 일 ${i}`,
-        checked: false,
-      });
-    }
-    return array;
-  }
-
 
   // createBulkTodos, 한번만 호출하기 위해서, 
   // () 빼고 넣기.

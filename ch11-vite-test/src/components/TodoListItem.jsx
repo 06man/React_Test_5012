@@ -15,24 +15,26 @@ import './TodoListItem.scss';
 
 // 추가 2-1 , onRemove
 // 추가 3-1 , onToggle
-const TodoListItem = ({ todo, onRemove, onToggle }) => {
+const TodoListItem = ({ todo, onRemove, onToggle, style }) => {
     // 추가 2-2, id
     const { id, text, checked } = todo;
 
     return (
-        <div className="TodoListItem">
-            {/* 추가1-3 */}
-            <div className={cn('checkbox', { checked })}
-                // 추가 3-2 , onToggle
-                onClick={() => onToggle(id)}>
-                {/* 추가1-4 */}
-                {checked ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
-                {/* 추가1-5 */}
-                <div className="text">{text}</div>
-            </div>
-            {/* 추가 2-3 */}
-            <div className="remove" onClick={() => onRemove(id)}>
-                <MdRemoveCircleOutline />
+        <div className="TodoListItem-virtualized" style={style}>
+            <div className="TodoListItem">
+                {/* 추가1-3 */}
+                <div className={cn('checkbox', { checked })}
+                    // 추가 3-2 , onToggle
+                    onClick={() => onToggle(id)}>
+                    {/* 추가1-4 */}
+                    {checked ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
+                    {/* 추가1-5 */}
+                    <div className="text">{text}</div>
+                </div>
+                {/* 추가 2-3 */}
+                <div className="remove" onClick={() => onRemove(id)}>
+                    <MdRemoveCircleOutline />
+                </div>
             </div>
         </div>
     );
