@@ -29,7 +29,7 @@ function App() {
   //추가2-2, useRef
   // 고유 id로 사용될 값
   // ref를 사용하여 변수 담기
-  const nextId = useRef(4);
+  const nextId = useRef(5001);
 
   //추가2-3, useCallback 이용해서, 한번만 생성후, 재사용.
   const onInsert = useCallback(

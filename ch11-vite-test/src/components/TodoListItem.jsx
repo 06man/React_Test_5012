@@ -1,8 +1,10 @@
+import React from 'react';
 import {
     MdCheckBoxOutlineBlank,
     MdCheckBox,
     MdRemoveCircleOutline,
 } from 'react-icons/md';
+
 // 추가1 
 // 클래스 이름 쉽게 접근 및 조건부 렌더링 하는 도구 
 import cn from 'classnames';
@@ -36,4 +38,4 @@ const TodoListItem = ({ todo, onRemove, onToggle }) => {
     );
 };
 
-export default TodoListItem;
+export default React.memo(TodoListItem);;
