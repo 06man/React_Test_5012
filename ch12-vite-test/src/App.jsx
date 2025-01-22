@@ -39,10 +39,23 @@ const App = () => {
   const onSubmit = useCallback(
     (e) => {
       e.preventDefault(); // 새로고침 방지
+      if (!form.name.trim() || !form.username.trim()) {
+        alert("name과 username 입력해주세요")
+        return;
+      }
+
+      //실습1 ,
+      if (data.array.some((item) => item.username === form.username)) {
+        alert("이미 존재하는 아이디입니다.")
+        return;
+      }
+
       const info = {
         id: nextId.current, // 고유 id
         name: form.name,
         username: form.username,
+        //실습2, 
+        completed: false,
       };
 
       // 배열에 새 항목 추가
@@ -104,6 +117,23 @@ const App = () => {
     []
   );
 
+  // 실습2
+
+  const onToggle = useCallback(
+    (id) => {
+      setData(
+        //불변성 유지, 
+        produce((draft) => {
+          const item = draft.array.find((info) => info.id === id)
+          if (item) {
+            item.completed = !item.completed;
+          }
+        })
+      )
+    }
+    , []
+  )
+
   return (
     <div>
       <h1 className='react'>ch12 immer 이용한 불변성 유지 해보기</h1>
@@ -125,7 +155,10 @@ const App = () => {
       <div>
         <ul>
           {data.array.map((info) => (
-            <li key={info.id} onClick={() => onRemove(info.id)}>
+            <li key={info.id} onClick={() => onRemove(info.id)}
+              // 실습2 추가
+              onContextMenu={() => onToggle(info.id)}
+              style={{ textDecoration: info.completed ? 'line-through' : 'none' }}>
               {info.username} ({info.name})
             </li>
           ))}
