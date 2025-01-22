@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import Profile from './pages/Profile';
 import Articles from './pages/Articles';
 import Article from './pages/Article';
+import Layout from './Layout';
 
 function App() {
 
@@ -13,11 +14,19 @@ function App() {
     <>
       <h1 className='react'>ch13 리액트 라우팅</h1>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
+        {/* 교체, 
+        중첩 라우팅 설정1,
+        공통 레이아웃으로 , 1,2,3 번페이지를 묶기. */}
+        <Route element={<Layout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/profiles/:username" element={<Profile />} />
+        </Route>
+        {/* <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} /> */}
         {/* 추가, :username 이부분을 useParams 가져오는 대상. */}
         {/* 예시, http://localhost:5173/profiles/gildong */}
-        <Route path="/profiles/:username" element={<Profile />} />
+        {/* <Route path="/profiles/:username" element={<Profile />} /> */}
         <Route path="/Articles" element={<Articles />} >
           {/* 중첩 라우팅 설정1, 
           주의사항, 태그의 닫는 부분을 주의, 
