@@ -18,8 +18,15 @@ function App() {
         {/* 추가, :username 이부분을 useParams 가져오는 대상. */}
         {/* 예시, http://localhost:5173/profiles/gildong */}
         <Route path="/profiles/:username" element={<Profile />} />
-        <Route path="/Articles" element={<Articles />} />
-        <Route path="/Articles/:id" element={<Article />} />
+        <Route path="/Articles" element={<Articles />} >
+          {/* 중첩 라우팅 설정1, 
+          주의사항, 태그의 닫는 부분을 주의, 
+        중첩 라우팅 부모 요소의 자식으로 추가 
+        <Route>자식요소의 위치</Route>
+        */}
+          <Route path=":id" element={<Article />} />
+        </Route>
+        {/* <Route path="/Articles/:id" element={<Article />} /> */}
       </Routes>
     </>
   )

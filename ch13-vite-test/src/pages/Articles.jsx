@@ -1,8 +1,10 @@
-import { Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 
 const Articles = () => {
     return (
         <div>
+            {/* 공통으로 출력하고 싶은 요소를 적기 */}
+            {/* <Outlet /> */}
             <ul>
                 <li>
                     <Link to="/Articles/1">게시글 1</Link>
