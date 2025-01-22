@@ -3,9 +3,23 @@ import { Link } from 'react-router-dom';
 const Home = () => {
     return (
         <div>
-            <p>가장 먼저 보여지는 페이지입니다.</p>
-            {/* 추가 */}
-            <Link to="/about">소개</Link>
+            <ul>
+                <li>
+                    <Link to="/about">소개</Link>
+                </li>
+                <li>
+                    <Link to="/profiles/velopert">velopert의 프로필</Link>
+                </li>
+                <li>
+                    <Link to="/profiles/gildong">gildong의 프로필</Link>
+                </li>
+                <li>
+                    <Link to="/profiles/lsy">lsy의 프로필</Link>
+                </li>
+                <li>
+                    <Link to="/profiles/void">존재하지 않는 프로필</Link>
+                </li>
+            </ul>
         </div>
     );
 };
