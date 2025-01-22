@@ -3,6 +3,7 @@ import './App.css'
 import { Route, Routes } from 'react-router-dom';
 import About from './pages/About';
 import Home from './pages/Home';
+import Profile from './pages/Profile';
 
 function App() {
 
@@ -12,6 +13,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
+        {/* 추가, :username 이부분을 useParams 가져오는 대상. */}
+        {/* 예시, http://localhost:5173/profiles/gildong */}
+        <Route path="/profiles/:username" element={<Profile />} />
       </Routes>
     </>
   )
