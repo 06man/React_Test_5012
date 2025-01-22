@@ -18,7 +18,8 @@ function App() {
         중첩 라우팅 설정1,
         공통 레이아웃으로 , 1,2,3 번페이지를 묶기. */}
         <Route element={<Layout />}>
-          <Route path="/" element={<Home />} />
+          {/* <Route path="/" element={<Home />} /> */}
+          <Route index element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/profiles/:username" element={<Profile />} />
         </Route>
