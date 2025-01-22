@@ -7,6 +7,7 @@ import Profile from './pages/Profile';
 import Articles from './pages/Articles';
 import Article from './pages/Article';
 import Layout from './Layout';
+import NotFound from './pages/NotFound';
 
 function App() {
 
@@ -37,6 +38,10 @@ function App() {
           <Route path=":id" element={<Article />} />
         </Route>
         {/* <Route path="/Articles/:id" element={<Article />} /> */}
+        {/* 추가 Not Found 페이지 , 모든 경로에 대해서 적용
+	  해당 페이지가 없다면, 이 페이지로 이동함
+	  */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   )
