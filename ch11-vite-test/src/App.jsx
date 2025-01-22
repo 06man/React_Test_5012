@@ -126,6 +126,11 @@ function App() {
     , []
   )
 
+  //실습5, 
+  // 검색어 입력시, 검색된 할일 출력하기. 
+  const [search, setSearch] = useState("");
+  const searchedTodos = todos.filter((todo) => todo.text.toLocaleLowerCase().includes(search.toLocaleLowerCase()))
+
 
   return (
     <>
@@ -135,6 +140,13 @@ function App() {
         {/* 추가2-4, 부모 -> 자식, props 전달, onInsert*/}
         <TodoInsert onInsert={onInsert} />
         <div>
+          <input type='text' placeholder='검색어를 입력하세요'
+            value={search}
+            onChange={(e) => setSearch(e.target.value)} />
+          <h3>검색된 목록</h3>
+          <h3>검색된 갯수 : {searchedTodos.length}</h3>
+          <TodoList todos={searchedTodos} onRemove={onRemove} onToggle={onToggle} />
+
           <button onClick={removeChecked}>완료된 항목 삭제</button>
         </div>
         {/* <div>
