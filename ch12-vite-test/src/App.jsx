@@ -1,5 +1,6 @@
 import { useRef, useCallback, useState } from 'react';
 import './App.css'
+import { produce } from 'immer';
 
 const App = () => {
   const nextId = useRef(1); // 다음 id를 저장하는 useRef
@@ -14,12 +15,24 @@ const App = () => {
   const onChange = useCallback(
     (e) => {
       const { name, value } = e.target;
-      setForm({
-        ...form,
-        [name]: value, // name 속성에 따라 값 변경
-      });
+      setForm(
+        // {
+        //교체1
+        // ...form,
+        // [name]: value, // name 속성에 따라 값 변경
+        // }
+        // produce(form, (draft) => {
+        //   draft[name] = value;
+        // })
+        //교체1-2
+        produce((draft) => {
+          draft[name] = value;
+        })
+      );
     },
-    [form]
+    //교체1-3
+    // [form]
+    []
   );
 
   // 폼 제출을 처리하는 함수
@@ -33,10 +46,20 @@ const App = () => {
       };
 
       // 배열에 새 항목 추가
-      setData({
-        ...data,
-        array: data.array.concat(info),
-      });
+      setData(
+        //교체2
+        //   {
+        //   ...data,
+        //   array: data.array.concat(info),
+        // }
+        // 교체 2-2
+        // produce(data, (draft) => {
+        //   draft.array.push(info);
+        // })
+        produce((draft) => {
+          draft.array.push(info);
+        })
+      );
 
       // 폼 초기화
       setForm({
@@ -46,18 +69,39 @@ const App = () => {
 
       nextId.current += 1; // id 증가
     },
-    [data, form.name, form.username]
+    // 교체 2-3
+    // [data, form.name, form.username]
+    [form.name, form.username]
   );
 
   // 항목을 삭제하는 함수
   const onRemove = useCallback(
     (id) => {
-      setData({
-        ...data,
-        array: data.array.filter((info) => info.id !== id), // id가 일치하지 않는 항목만 유지
-      });
+      setData(
+        //교체3
+        //   {
+        //   ...data,
+        //   array: data.array.filter((info) => info.id !== id), // id가 일치하지 않는 항목만 유지
+        // }
+
+        //교체 3-2
+        // produce(data, (draft) => {
+        //   const index = draft.array.findIndex((info) => info.id === id);
+        //   if (index !== -1) {
+        //     draft.array.splice(index, 1); // 해당 항목 삭제
+        //   }
+        // })
+        produce((draft) => {
+          const index = draft.array.findIndex((info) => info.id === id);
+          if (index !== -1) {
+            draft.array.splice(index, 1); // 해당 항목 삭제
+          }
+        })
+      );
     },
-    [data]
+    // [data]
+    // 교체 3-3
+    []
   );
 
   return (
