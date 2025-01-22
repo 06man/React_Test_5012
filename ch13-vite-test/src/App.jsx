@@ -8,6 +8,8 @@ import Articles from './pages/Articles';
 import Article from './pages/Article';
 import Layout from './Layout';
 import NotFound from './pages/NotFound';
+import Login from './pages/Login';
+import MyPage from './pages/MyPage';
 
 function App() {
 
@@ -42,6 +44,8 @@ function App() {
 	  해당 페이지가 없다면, 이 페이지로 이동함
 	  */}
         <Route path="*" element={<NotFound />} />
+        <Route path="login" element={<Login />} />
+        <Route path="mypage" element={<MyPage />} />
       </Routes>
     </>
   )
