@@ -4,6 +4,8 @@ import { Route, Routes } from 'react-router-dom';
 import About from './pages/About';
 import Home from './pages/Home';
 import Profile from './pages/Profile';
+import Articles from './pages/Articles';
+import Article from './pages/Article';
 
 function App() {
 
@@ -16,6 +18,8 @@ function App() {
         {/* 추가, :username 이부분을 useParams 가져오는 대상. */}
         {/* 예시, http://localhost:5173/profiles/gildong */}
         <Route path="/profiles/:username" element={<Profile />} />
+        <Route path="/Articles" element={<Articles />} />
+        <Route path="/Articles/:id" element={<Article />} />
       </Routes>
     </>
   )

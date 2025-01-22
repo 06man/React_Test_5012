@@ -7,6 +7,7 @@ const About = () => {
     // const location = useLocation();
     // useLocation으로 현재 경로 정보 가져오기
     const [searchParams, setSearchParams] = useSearchParams(); // useSearchParams 호출 형태 수정
+
     const detail = searchParams.get('detail'); // 'detail' 값 가져오기
     const mode = searchParams.get('mode'); // 'mode' 값 가져오기
 
