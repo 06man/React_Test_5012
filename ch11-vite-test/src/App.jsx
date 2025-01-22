@@ -47,10 +47,10 @@ function App() {
 
   // createBulkTodos, 한번만 호출하기 위해서, 
   // () 빼고 넣기.
-  // const [todos, setTodos] = useState(createBulkTodos);
+  const [todos, setTodos] = useState(createBulkTodos);
 
   // useReducer로 상태 관리
-  const [todos, dispatch] = useReducer(todoReducer, undefined, createBulkTodos);
+  // const [todos, dispatch] = useReducer(todoReducer, undefined, createBulkTodos);
 
   //추가2-2, useRef
   // 고유 id로 사용될 값
@@ -67,8 +67,8 @@ function App() {
         checked: false,
       };
       // 불변성 유지 하면서, 내장함수 concat , 기본 배열에 추가하기.
-      // setTodos((todos) => todos.concat(todo)); // 새로운 항목 추가
-      dispatch({ type: 'INSERT', todo });
+      setTodos((todos) => todos.concat(todo)); // 새로운 항목 추가
+      // dispatch({ type: 'INSERT', todo });
       nextId.current += 1; // nextId를 1씩 증가
     },
     []
@@ -77,10 +77,10 @@ function App() {
   // 추가 3-1,
   const onRemove = useCallback(
     (id) => {
-      // setTodos(
-      //   (todos) => todos.filter((todo) => todo.id !== id)
-      // );
-      dispatch({ type: 'REMOVE', id });
+      setTodos(
+        (todos) => todos.filter((todo) => todo.id !== id)
+      );
+      // dispatch({ type: 'REMOVE', id });
 
     },
     []
@@ -88,13 +88,13 @@ function App() {
 
   // 추가 4-1
   const onToggle = useCallback((id) => {
-    dispatch({ type: 'TOGGLE', id });
-    // setTodos(
-    //   (todos) =>
-    //     todos.map((todo) =>
-    //       todo.id === id ? { ...todo, checked: !todo.checked } : todo
-    //     )
-    // );
+    // dispatch({ type: 'TOGGLE', id });
+    setTodos(
+      (todos) =>
+        todos.map((todo) =>
+          todo.id === id ? { ...todo, checked: !todo.checked } : todo
+        )
+    );
   }, []);
 
   //실습1, 
@@ -117,6 +117,14 @@ function App() {
   const uncheckedTodos = todos.filter((todo) => !todo.checked);
 
 
+  //실습4, 
+  // 체크된 항목 모두 삭제
+  const removeChecked = useCallback(
+    () => {
+      setTodos((todos) => todos.filter((todo) => !todo.checked))
+    }
+    , []
+  )
 
 
   return (
@@ -126,6 +134,9 @@ function App() {
         {/* Todo App을 만들자! */}
         {/* 추가2-4, 부모 -> 자식, props 전달, onInsert*/}
         <TodoInsert onInsert={onInsert} />
+        <div>
+          <button onClick={removeChecked}>완료된 항목 삭제</button>
+        </div>
         {/* <div>
           완료된 항목의 갯수 : {checkedCount}
           <button onClick={toggleAll}>상태 체크 반전 모두하기.</button>
