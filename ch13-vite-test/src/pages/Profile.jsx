@@ -1,4 +1,4 @@
-// 준비물
+// 준비물, useParams : URL 파라미터 확인하는 도구
 import { useParams } from 'react-router-dom';
 
 const data = {
