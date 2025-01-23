@@ -31,14 +31,16 @@ const NewsItemBlock = styled.div`
   }
 `;
 const formatDate = (isoString) => {
-    // JavaScript Date 객체로 변환
     const date = new Date(isoString);
-    // 연도, 월, 일 추출 및 포맷팅
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, '0'); // 월은 0부터 시작하므로 +1
     const day = String(date.getDate()).padStart(2, '0');
-    return `${year}-${month}-${day}`;
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+    const seconds = String(date.getSeconds()).padStart(2, '0');
+    return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 };
+
 
 // 부모 App -> NewsList -> NewsItem
 const NewsItem = ({ article }) => {
@@ -61,8 +63,8 @@ const NewsItem = ({ article }) => {
                 </h2>
                 <p>{description}</p>
                 <p>저자 : {author}</p>
-                {/* <p>발행일 : {formatDate(publishedAt)}</p> */}
-                <p>발행일 : {publishedAt}</p>
+                <p>발행일 : {formatDate(publishedAt)}</p>
+                {/* <p>발행일 : {publishedAt}</p> */}
             </div>
         </NewsItemBlock>
     );

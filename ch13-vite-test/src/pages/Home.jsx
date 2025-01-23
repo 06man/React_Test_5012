@@ -28,6 +28,10 @@ const Home = () => {
                 <li>
                     <Link to="/login">로그인</Link>
                 </li>
+                {/* // 실습1 */}
+                <li>
+                    <Link to="/category/lsy">lsy 카테고리 샘플</Link>
+                </li>
             </ul>
         </div>
     );

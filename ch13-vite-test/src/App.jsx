@@ -10,6 +10,7 @@ import Layout from './Layout';
 import NotFound from './pages/NotFound';
 import Login from './pages/Login';
 import MyPage from './pages/MyPage';
+import Category from './pages/Category';
 
 function App() {
 
@@ -46,6 +47,8 @@ function App() {
         <Route path="*" element={<NotFound />} />
         <Route path="/login" element={<Login />} />
         <Route path="/mypage" element={<MyPage />} />
+        {/* 실습1, Category 라우팅 추가. */}
+        <Route path="/category/:name" element={<Category />} />
       </Routes>
     </>
   )
