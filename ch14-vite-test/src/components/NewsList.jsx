@@ -16,7 +16,7 @@ const NewsListBlock = styled.div`
   }
 `;
 
-const NewsList = () => {
+const NewsList = ({ category }) => {
     //추가
     const [articles, setArticles] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -28,8 +28,16 @@ const NewsList = () => {
         const fetchData = async () => {
             setLoading(true);
             try {
+                // 방법1, 전체기사에 대한 데이터 받기. 
+                // const response = await axios.get(
+                //     'https://newsapi.org/v2/top-headlines?country=us&apiKey=0a8c4202385d4ec1bb93b7e277b3c51f'
+                // );
+                // 방법2, 각 카테고리별로 받기.
+                //추가
+                const query = category === 'all' ? '' : `&category=${category}`;
+                //추가       
                 const response = await axios.get(
-                    'https://newsapi.org/v2/top-headlines?country=us&apiKey=0a8c4202385d4ec1bb93b7e277b3c51f'
+                    `https://newsapi.org/v2/top-headlines?country=us${query}&apiKey=0a8c4202385d4ec1bb93b7e277b3c51f`
                 );
                 setArticles(response.data.articles);
             } catch (e) {
@@ -39,7 +47,8 @@ const NewsList = () => {
         };
         // 함수를 이용해야. 
         fetchData();
-    }, []);
+        //category 변경시 마다 , useEffect 함수가 동작함.
+    }, [category]);
 
     //추가
     // 대기 중일 때

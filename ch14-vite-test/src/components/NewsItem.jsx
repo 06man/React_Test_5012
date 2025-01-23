@@ -61,7 +61,8 @@ const NewsItem = ({ article }) => {
                 </h2>
                 <p>{description}</p>
                 <p>저자 : {author}</p>
-                <p>발행일 : {formatDate(publishedAt)}</p>
+                {/* <p>발행일 : {formatDate(publishedAt)}</p> */}
+                <p>발행일 : {publishedAt}</p>
             </div>
         </NewsItemBlock>
     );
