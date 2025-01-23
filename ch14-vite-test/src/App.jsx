@@ -3,6 +3,8 @@ import axios from 'axios';
 import './App.css'
 import NewsList from './components/NewsList';
 import Categories from './components/Categories';
+import NewsPage from './pages/NewsPage';
+import { Route, Routes } from 'react-router-dom';
 
 
 const App = () => {
@@ -39,8 +41,24 @@ const App = () => {
       )} */}
       {/* <Categories />
       <NewsList /> */}
-      <Categories category={category} onSelect={onSelect} />
-      <NewsList category={category} />
+      {/* 기존, App -> Categories , category,onSelect 전달,  */}
+      {/* 기존, App -> NewsList , category, 전달,  */}
+      {/* 업데이트가 계속 발생을 하구나.  */}
+      {/* 라우팅을 도입을해서, 업데이트 되는 상황을 줄이자.  */}
+      {/* <Categories category={category} onSelect={onSelect} />
+      <NewsList category={category} /> */}
+      {/* 변경,  */}
+      {/* App -> NewsPage */}
+      {/* <NewsPage /> */}
+      {/* 컴포넌트1
+      컴포넌트2
+      컴포넌트3 */}
+
+      {/* 라우팅 적용하기 */}
+      <Routes>
+        <Route path="/" element={<NewsPage />} />
+        <Route path="/:category" element={<NewsPage />} />
+      </Routes>
     </div>
   );
 };
