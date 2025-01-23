@@ -10,6 +10,7 @@ const categories = [
   { name: 'sports', text: '스포츠' },
   { name: 'technology', text: '기술' },
   { name: 'cctvWeather', text: 'cctv 날씨 샘플' },
+  { name: 'busanAtt', text: '부산 명소' },
 ];
 
 const CategoriesBlock = styled.div`

@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import usePromise from '../lib/usePromise';
 import PdItem from './PdItem';
+import PdItemBusan from './PdItemBusan';
 
 const NewsListBlock = styled.div`
   box-sizing: border-box;
@@ -27,6 +28,12 @@ const NewsList = ({ category }) => {
             console.log(`category 2: ${category}`)
             return axios.get(
                 `http://apis.data.go.kr/1360000/RoadWthrInfoService/getCctvStnRoadWthr?serviceKey=ALRX9GpugtvHxcIO%2FiPg1vXIQKi0E6Kk1ns4imt8BLTgdvSlH%2FAKv%2BA1GcGUQgzuzqM3Uv1ZGgpG5erOTDcYRQ%3D%3D&numOfRows=10&pageNo=1&eqmtId=0500C00001&hhCode=00&dataType=json`
+            );
+        }
+        else if (category === 'busanAtt') {
+            console.log(`category 2: ${category}`)
+            return axios.get(
+                `http://apis.data.go.kr/6260000/AttractionService/getAttractionKr?serviceKey=ALRX9GpugtvHxcIO%2FiPg1vXIQKi0E6Kk1ns4imt8BLTgdvSlH%2FAKv%2BA1GcGUQgzuzqM3Uv1ZGgpG5erOTDcYRQ%3D%3D&numOfRows=10&pageNo=1&resultType=json`
             );
         }
         else {
@@ -59,9 +66,15 @@ const NewsList = ({ category }) => {
         return <NewsListBlock>에러 발생!</NewsListBlock>;
     }
 
+    // const data = category === 'cctvWeather'
+    //     ? resolved.data.response.body.items.item // category가 cctvWeather인 경우 item 사용
+    //     : resolved.data.articles;
     const data = category === 'cctvWeather'
-        ? resolved.data.response.body.items.item // category가 cctvWeather인 경우 item 사용
-        : resolved.data.articles;
+        ? resolved.data.response.body.items.item || []
+        : category === 'busanAtt'
+            ? resolved.data.getAttractionKr.item || []
+            : resolved.data.articles || [];
+
 
 
     // articles 값이 유효할 때
@@ -69,7 +82,7 @@ const NewsList = ({ category }) => {
         <NewsListBlock>
             {/* 추가 */}
             {/* articles = [{기사1},{기사2},{기사3}...] */}
-            {
+            {/* {
                 category === 'cctvWeather'
                     ? data.map((data, index) => (
                         <PdItem key={index} article={data} />
@@ -77,7 +90,21 @@ const NewsList = ({ category }) => {
                     : data.map((data) => (
                         <NewsItem key={data.url} article={data} />
                     ))
-            }
+            } */}
+            {category === 'cctvWeather' ? (
+                data.map((data, index) => (
+                    <PdItem key={index} article={data} />
+                ))
+            ) : category === 'busanAtt' ? (
+                data.map((data, index) => (
+                    <PdItemBusan key={index} article={data} />
+                ))
+            ) : (
+                data.map((data) => (
+                    <NewsItem key={data.url} article={data} />
+                ))
+            )}
+
         </NewsListBlock>
     );
 };
