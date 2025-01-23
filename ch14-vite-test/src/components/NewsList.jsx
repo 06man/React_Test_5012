@@ -55,13 +55,17 @@ const NewsList = ({ category }) => {
     // }, [category]);
 
     // 방법2, 파일 분리해서, 작업. 커스텀 훅스 이용. 
-    //추가
-    const [loading, resolved, error] = usePromise(() => {
+    // 초급, 일단 받아와서 출력
+    // 중급 이상. 최적화 신경. 
+    // 고급 이상, 비용을 생각함. 
+    const sendData = () => {
         const query = category === 'all' ? '' : `&category=${category}`;
         return axios.get(
             `https://newsapi.org/v2/top-headlines?country=us${query}&apiKey=0a8c4202385d4ec1bb93b7e277b3c51f`
         );
-    }, [category]);
+    }
+    //추가
+    const [loading, resolved, error] = usePromise(sendData, [category]);
 
     //추가
     // 대기 중일 때
