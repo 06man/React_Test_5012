@@ -9,11 +9,15 @@ const categories = [
   { name: 'science', text: '과학' },
   { name: 'sports', text: '스포츠' },
   { name: 'technology', text: '기술' },
+  { name: 'cctvWeather', text: 'cctv 날씨 샘플' },
 ];
 
 const CategoriesBlock = styled.div`
   // flexbox를 사용하여 자식 요소들을 가로로 배치
   display: flex;
+
+  //실습1
+  justify-content: center;
 
   // 컨테이너 내부에 1rem(16px) 간격으로 패딩 추가
   padding: 1rem;
@@ -94,14 +98,22 @@ const Category = styled(NavLink)`
     font-weight: 600;
     border-bottom: 2px solid #22b8cf;
     color: #22b8cf;
+    //실습2
+    transition: color 0.3s ease, border-bottom 0.3s ease;
 
     &:hover {
       color: #3bc9db;
     }
   }
 
+  // 카테고리의 요소들간의 간격, 
+  // 미디어 쿼리 이용해서, 조정. 
+  // 실습3
   & + & {
     margin-left: 1rem;
+    @media screen and (max-width: 768px) {
+      margin-left: 2rem;
+    }
   }
 `;
 
